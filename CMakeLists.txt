@@ -40,6 +40,7 @@ endif()
 if(BUILD_TOOLS)
     add_executable(lz4 ${LZ4_SRCS})
     install(TARGETS lz4 RUNTIME DESTINATION "bin/")
+	export ( TARGETS lz4 FILE ${PROJECT_NAME}-config.cmake )
 endif()
 
 if(BUILD_LIBS)    
@@ -54,6 +55,7 @@ if(BUILD_LIBS)
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
     )
+	export ( TARGETS liblz4 FILE ${PROJECT_NAME}-config.cmake )
 
     install(FILES
     ${LZ4_DIR}/lz4.h
@@ -90,6 +92,6 @@ endif()
 ADD_DEFINITIONS("-DLZ4_VERSION=\"${CPACK_PACKAGE_VERSION_PATCH}\"")
 INCLUDE_DIRECTORIES (${LZ4_DIR})
 
-
+export ( PACKAGE ${PROJECT_NAME} )
 
 
